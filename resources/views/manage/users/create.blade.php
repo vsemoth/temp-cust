@@ -37,7 +37,7 @@
 						    <label class="form-check-label" for="auto_generate">Auto Generate Password</label>
 						  </div>
 				<hr>
-				<input type="submit" class="btn btn-success btn-block" value="Create User">
+				<input type="submit" class="btn btn-success btn-block is-outlined" value="Create User">
 
 			</form>
 		</div>

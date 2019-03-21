@@ -44,6 +44,15 @@
                     <li><a href="#">Roles &amp; Permissions</a></li>
                 </ul>
             </li>
+
+            <li class="header">SITE ADMIN</li>
+            <li class="treeview">
+                <a href="#"><i class='fa fa-link'></i> <span>POSTS</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ route('posts.index') }}">Posts Management</a></li>
+                    <li><a href="#">Blog (Main Site)</a></li>
+                </ul>
+            </li>
         </ul><!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->
