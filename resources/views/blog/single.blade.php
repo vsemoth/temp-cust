@@ -1,4 +1,4 @@
-@extends('adminlte::layouts.app')
+@extends('adminlte::welcome')
 
 @section('htmlheader_title', $post['post_title'])
 
@@ -11,7 +11,7 @@
 					<h1>{{ $post["post_title"] }}</h1>					
 				</div>
 				<div class="card card-body border-0">
-					<h1>{{ $post["post_content"] }}</h1>					
+					<p>{{ $post["post_content"] }}</p>					
 				</div>
 			</div>
 			

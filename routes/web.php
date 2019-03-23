@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'BlogController@index')->middleware('web');
 
 Route::group(['middleware' => 'auth'], function () {
     //    Route::get('/link1', function ()    {
@@ -35,6 +33,13 @@ Route::get('{slug}', [
 	'slug', '[\w\d\-\_]+'
 );
 
+Route::get('{image_slug}', [
+	'as' => 'blog.image',
+	'uses' => 'BlogController@getImage'
+])->where(
+	'slug', '[\w\d\-\_]+'
+);
+
 Route::prefix('manage')->middleware('role:superadministrator|administrator|editor|author|contributor')->group(function ()
 {
 	Route::get('/', 'ManageController@index');
@@ -42,4 +47,5 @@ Route::prefix('manage')->middleware('role:superadministrator|administrator|edito
 	Route::resource('/users', 'UserController');
 	Route::resource('/posts', 'PostsController');
 	Route::resource('/products', 'ProductController');
+	Route::resource('/screenshots', 'ScreenshotController');
 });
