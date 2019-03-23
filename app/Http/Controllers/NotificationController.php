@@ -69,7 +69,7 @@ class NotificationController extends Controller
     public function show($id)
     {
         // Get data from database
-        $notification = Notification::orderBy('updated_at')->get();
+        $notification = Notification::find($id);
 
         // Return selected notification with DB data
         return view('manage.notifications.show')->with('notification', $notification);
@@ -83,8 +83,11 @@ class NotificationController extends Controller
      */
     public function edit($id)
     {
+        // Find notification in DB
+        $notification = Notification::find($id);
+
         // Return notification edit view
-        return view('manage.notifications.edit');
+        return view('manage.notifications.edit')->with('notification', $notification);
     }
 
     /**

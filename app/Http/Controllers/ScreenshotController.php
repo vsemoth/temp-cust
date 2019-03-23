@@ -40,7 +40,7 @@ class ScreenshotController extends Controller
     {
         // Validation
         $this->validate($request, [
-            'cover_image' => 'image|nullable'
+            'cover_image' => 'Required|image'
         ]);
 
         // Handle file upload
@@ -58,7 +58,7 @@ class ScreenshotController extends Controller
             $fileNameToStore = $filename . '_' . time() . '.' . $extension;
 
             # Upload the Image
-            $path = $request->file('cover_image')->storeAs('public/images/cover_images', $fileNameToStore);
+            $path = $request->file('cover_image')->storeAs('public/images/screenshots', $fileNameToStore);
 
         } else {
             # Set default file
@@ -133,7 +133,7 @@ class ScreenshotController extends Controller
     {
         // Validation
         $this->validate($request, [
-            'cover_image' => 'image|nullable'
+            'cover_image' => 'Required|image'
         ]);
 
         // Handle file upload
@@ -151,7 +151,7 @@ class ScreenshotController extends Controller
             $fileNameToStore = $filename . '_' . time() . '.' . $extension;
 
             # Upload the Image
-            $path = $request->file('cover_image')->storeAs('public/images/cover_images', $fileNameToStore);
+            $path = $request->file('cover_image')->storeAs('public/images/screenshots', $fileNameToStore);
 
             // Find screenshot in DB by ID
             $screenshot = Screenshot::find($id);

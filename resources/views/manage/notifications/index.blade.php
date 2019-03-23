@@ -18,7 +18,7 @@
                     <tr>
                         <th>#</th>
                         <th>
-                            <a href="#">
+                            <a href="{{ route('notifications.show',$notification->id) }}">
                                 {{ $notification->notification_title }}
                             </a>
                         </th>

@@ -34,7 +34,7 @@
             <li class="header">HOME</li>
             <!-- Optionally, you can add icons to the links -->
             <li class="active"><a href="{{ route('manage.dashboard') }}"><i class='fa fa-link'></i> <span>Dashboard</span></a></li>
-            <li><a href="#"><i class='fa fa-link'></i> <span>{{ trans('adminlte_lang::message.anotherlink') }}</span></a></li>
+            <li><a href="{{ route('notifications.index') }}"><i class='fa fa-link'></i> <span>Notifications</span></a></li>
 
             <li class="header">USER ADMIN</li>
             <li class="treeview">

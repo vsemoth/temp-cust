@@ -20,13 +20,20 @@
 
 			@foreach ($screenshots as $screenshot)
 				<div style="display: inline-flex; position: absolute; z-index: 5000;">
-					<a class="btn btn-primary" data-toggle="modal" data-target="#basicExampleModal">
-					  Edit Image
-					</a>
+        {!! Form::open(['action' => ['ScreenshotController@destroy', $screenshot->id], 'method' => 'screenshot', 'enctype' => 'multipart/form-data']) !!}
+          {{ Form::hidden('_method', 'DELETE') }}
+          {{ Form::submit('DELETE', ['class' => 'btn btn-danger btn-sm']) }}
+        {!! Form::close() !!}
+
+          <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#basicExampleModal">
+            Edit Image
+          </a>
 				</div>
 
 				<div style="position: relative;">
-					<img src='{{ url("storage/images/cover_images/$screenshot->cover_image") }}' alt="screenshot image">
+          <a href="{{ route('screenshots.show',$screenshot->id) }}">
+					 <img src='{{ url("storage/images/screenshots/$screenshot->cover_image") }}' alt="screenshot image">
+          </a>
 				</div>
 				<hr>
 			@endforeach
@@ -36,7 +43,7 @@
     </div>
 
 <!-- Modal -->
-<div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div style="position: sticky;" class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">

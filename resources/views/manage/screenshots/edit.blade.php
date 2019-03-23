@@ -1,6 +1,6 @@
-
-    <h2>Edit screenshot</h2>
+    <h2>EDIT SCREENSHOT</h2>
     <hr>
+    @if (!empty($screenshot))
     {!! Form::open(['action' => ['ScreenshotController@update', $screenshot->id], 'method' => 'screenshot', 'enctype' => 'multipart/form-data']) !!}
     <div class="form-group">
         {{ Form::file('cover_image') }}
@@ -12,3 +12,4 @@
         {{ Form::submit('Update screenshot', ['class' => 'btn btn-primary']) }}
       </div>
     {!! Form::close() !!}
+    @endif
