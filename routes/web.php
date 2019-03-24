@@ -49,4 +49,5 @@ Route::prefix('manage')->middleware('role:superadministrator|administrator|edito
 	Route::resource('/posts', 'PostsController');
 	Route::resource('/products', 'ProductController');
 	Route::resource('/screenshots', 'ScreenshotController');
+	Route::resource('/categories', 'CategoriesController', ['except' => ['create']]);
 });

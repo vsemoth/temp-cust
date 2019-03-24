@@ -16,9 +16,9 @@
 
     <div align="center" class="card-body">
 
-		@if(count($screenshots) > 0)
+      @foreach ($screenshots as $screenshot)
 
-			@foreach ($screenshots as $screenshot)
+		@if(count($screenshots) > 0)
 				<div style="display: inline-flex; position: absolute; z-index: 5000;">
         {!! Form::open(['action' => ['ScreenshotController@destroy', $screenshot->id], 'method' => 'screenshot', 'enctype' => 'multipart/form-data']) !!}
           {{ Form::hidden('_method', 'DELETE') }}
@@ -36,18 +36,16 @@
           </a>
 				</div>
 				<hr>
-			@endforeach
-
-		@endif
+    @endif
     	
     </div>
 
 <!-- Modal -->
-<div style="position: sticky;" class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">{{ $screenshot->cover_image }}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -59,6 +57,8 @@
   </div>
 </div>
 	
+    
+      @endforeach
 </div>
 
 <script>

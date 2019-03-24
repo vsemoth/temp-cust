@@ -5,6 +5,19 @@
     <div class="form-group">
         {{ Form::file('cover_image') }}
     </div>
+
+    <br>
+
+    {{ Form::label('category_id', 'Category:') }}
+
+        <select name="category_id" class="form-control">
+
+    @foreach($categories as $category)
+            <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+    @endforeach
+
+        </select>
+
     <hr>
         {{ Form::hidden('_method', 'PUT') }}
       <div class="modal-footer">

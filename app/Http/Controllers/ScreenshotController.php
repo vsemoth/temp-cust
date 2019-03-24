@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Screenshot;
+use App\Category;
 use Session;
 
 class ScreenshotController extends Controller
@@ -16,7 +17,11 @@ class ScreenshotController extends Controller
     public function index()
     {
         $screenshots = Screenshot::orderBy('updated_at', 'desc')->paginate(10);
-        return view('manage.screenshots.index')->with('screenshots', $screenshots);
+
+        // Fetch Categories DB object
+        $categories = Category::all();
+        
+        return view('manage.screenshots.index')->with('screenshots', $screenshots)->with('categories', $categories);
     }
 
     /**
@@ -26,8 +31,11 @@ class ScreenshotController extends Controller
      */
     public function create()
     {
-        // Return Create Page
-        return view('manage.screenshots.create');
+        // Fetch Categories DB object
+        $categories = Category::all();
+
+        // Return Create Page Categories
+        return view('manage.screenshots.create')->with('categories', $categories);
     }
 
     /**
@@ -111,15 +119,14 @@ class ScreenshotController extends Controller
     {
     // Fetch screenshot data from DB
         $screenshot = Screenshot::find($id);
+
+        // Fetch Categories DB object
+        $categories = Category::all();
+        
         $screenshots = Screenshot::all();
-    // Check correct user authentication
-    /*if (Auth::user()->id != $screenshot->user_id) {
-        # Redirect user to screenshot Index route
-        return redirect('/screenshots')->with('error', 'Unauthorized Access!');
-    }*/
 
     // Return edit view with data
-        return view('manage.screenshots.edit')->with('screenshot', $screenshot)->with('screenshots', $screenshots);
+        return view('manage.screenshots.edit')->with('categories', $categories)->with('screenshot', $screenshot)->with('screenshots', $screenshots);
     }
 
     /**

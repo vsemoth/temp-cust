@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateScreenshotsTable extends Migration
+class CreateCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateScreenshotsTable extends Migration
      */
     public function up()
     {
-        Schema::create('screenshots', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('cover_image');
-            $table->string('image_slug');
-            $table->integer('category_id')->nullable()->unsigned();
-            $table->integer('tag_id')->nullable();
+            $table->string('category_name');
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ class CreateScreenshotsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('screenshots');
+        Schema::dropIfExists('categories');
     }
 }
