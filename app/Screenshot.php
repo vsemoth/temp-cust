@@ -6,9 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Screenshot extends Model
 {
+	// Define table
+    protected $guarded = [];
+
     // Define Category - Screenshot relationship
     public function category()
     {
-        $this->belongsTo('App\Category');
+        return $this->belongsTo('App\Category');
     }
 }

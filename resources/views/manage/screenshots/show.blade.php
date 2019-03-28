@@ -15,7 +15,7 @@
 
     <div align="center" class="card-body">
 
-		@if(count($screenshots) > 0)
+		@if(count($screenshot) > 0)
 
 				<div style="position: relative;">
 					<img src="img/$screenshot['cover_image']" alt="screenshot image">

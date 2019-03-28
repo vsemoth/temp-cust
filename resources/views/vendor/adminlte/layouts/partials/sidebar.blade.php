@@ -55,6 +55,12 @@
                 </ul>
             </li>
             <li class="treeview">
+                <a href="#"><i class='fa fa-link'></i> <span>ECOMMERCE</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ route('products.index') }}">Ecom Management</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
                 <a href="#"><i class='fa fa-link'></i> <span>Screenshots</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="{{ route('screenshots.index') }}">Screenshot Management</a></li>

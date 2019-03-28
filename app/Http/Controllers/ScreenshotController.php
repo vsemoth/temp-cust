@@ -89,6 +89,8 @@ class ScreenshotController extends Controller
 
         $screenshot->image_slug = $slug;
 
+        $screenshot->category_id = $request->input('category_id');
+
         $screenshot->save();
 
         Session::flash('success', 'screenshot created successfully');
@@ -140,8 +142,12 @@ class ScreenshotController extends Controller
     {
         // Validation
         $this->validate($request, [
-            'cover_image' => 'Required|image'
+            'cover_image' => 'Required|image',
+            'category_id' => 'Required'
         ]);
+
+        // Find screenshot in DB by ID
+        $screenshot = Screenshot::find($id);
 
         // Handle file upload
         if ($request->hasFile('cover_image')) {
@@ -160,9 +166,6 @@ class ScreenshotController extends Controller
             # Upload the Image
             $path = $request->file('cover_image')->storeAs('public/images/screenshots', $fileNameToStore);
 
-            // Find screenshot in DB by ID
-            $screenshot = Screenshot::find($id);
-
                 # Replace Feature Image
                 $screenshot->cover_image = $fileNameToStore;
 
@@ -176,6 +179,8 @@ class ScreenshotController extends Controller
             $slug = trim($res, $sep);
 
             $screenshot->image_slug = $slug;
+
+            $screenshot->category_id = $request->input('category_id');
 
             $screenshot->save();
         }

@@ -37,7 +37,7 @@ Route::get('{image_slug}', [
 	'as' => 'blog.image',
 	'uses' => 'BlogController@getImage'
 ])->where(
-	'slug', '[\w\d\-\_]+'
+	'image_slug', '[\w\d\-\_]+'
 );
 
 Route::prefix('manage')->middleware('role:superadministrator|administrator|editor|author|contributor')->group(function ()
